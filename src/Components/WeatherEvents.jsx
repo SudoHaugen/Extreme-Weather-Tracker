@@ -12,16 +12,20 @@ const WeatherEvents = ({ data }) => {
         <div class="property-card">
           <a href="#">
             <div class="property-image">
-              <div class="property-image-title">
-                <h5>Card Title</h5>
-              </div>
+              <div class="property-image-title"></div>
             </div>
           </a>
           <div class="property-description">
-            <h5> Card Title </h5>
+            <h5> {element.category} </h5>
             <p>
-              Lorem Ipsum Dipsum hortata. Mixcall Horcho. Mixwell Chingo. More
-              Bingo. Lorem Ipum doth be hard.
+              {element.title === ""
+                ? "No discription available"
+                : element.title}
+            </p>
+            <p>
+              {element.description === ""
+                ? "No discription available"
+                : element.description}
             </p>
           </div>
           <a href="#">
