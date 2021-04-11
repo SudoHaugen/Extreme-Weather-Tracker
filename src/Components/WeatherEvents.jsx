@@ -1,5 +1,9 @@
 /**@format */
 
+/** Displays simple cards with information about each weather event */
+
+import htmlComponent from "../static_resources/event_cards/index.html";
+
 const WeatherEvents = ({ data }) => {
   let weatherEvents = [];
   data.forEach((element) => {
@@ -9,7 +13,7 @@ const WeatherEvents = ({ data }) => {
           <li>Title: {element.title}</li>
           <li>
             {element.description !== null
-              ? "No description was given"
+              ? "No description is available"
               : element.description}
           </li>
           <li>Category: {element.category}</li>
