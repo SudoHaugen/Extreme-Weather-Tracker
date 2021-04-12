@@ -1,0 +1,18 @@
+.marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 42px;
+  height: 42px;
+  background-color: #000;
+  background-image: url("../../img/wildfire_icon.jpg");
+  border: 2px solid #fff;
+  border-radius: 100%;
+  user-select: none;
+  transform: translate(-50%, -50%);
+}
+.marker:hover {
+  z-index: 1;
+}
+
+/*# sourceMappingURL=wildfire_main.css.map */
