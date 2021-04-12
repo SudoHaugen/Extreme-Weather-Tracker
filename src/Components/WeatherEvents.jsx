@@ -8,14 +8,14 @@ const WeatherEvents = ({ data }) => {
   let weatherEvents = [];
   data.forEach((element) => {
     weatherEvents.push(
-      <div class="center">
-        <div class="property-card">
+      <div className="center">
+        <div className="property-card">
           <a href="#">
-            <div class="property-image">
-              <div class="property-image-title"></div>
+            <div className="property-image">
+              <div className="property-image-title"></div>
             </div>
           </a>
-          <div class="property-description">
+          <div className="property-description">
             <h5> {element.category} </h5>
             <p>
               {element.title === ""
@@ -29,7 +29,7 @@ const WeatherEvents = ({ data }) => {
             </p>
           </div>
           <a href="#">
-            <div class="property-social-icons"></div>
+            <div className="property-social-icons"></div>
           </a>
         </div>
       </div>
