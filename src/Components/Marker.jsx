@@ -2,9 +2,11 @@ import React from "react";
 import "../static_resources/maps/map_icons/wildfire_main.css";
 
 const Marker = (props) => {
-    //const { title } = props;
+    const { icon } = props;
     return ( 
-        <div className="marker" />
+        <div className="marker">
+            <img src={icon} alt="wildfire" className="logo"/>
+        </div>
      );
 }
  

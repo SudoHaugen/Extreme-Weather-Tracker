@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar />
-        <GlobalMap />
+        <WeatherForecast />
       </React.Fragment>
     );
   }

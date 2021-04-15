@@ -2,29 +2,51 @@
 
 import React from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-//import Marker from "./Marker";
-//import "../static_resources/maps/main.css";
-import wildfire_icon from "../static_resources/img/wildfire_icon_resized.jpg";
+import wildfire_icon from "../static_resources/img/fire-fill.png";
+import "../static_resources/maps/main.css";
 
 const containerStyle = {
-  width: "1400px",
-  height: "600px",
+  width: "100%",
+  height: "100vh",
 };
 
 const center = {
-  lat: 0,
-  lng: -119.417931,
+  lat: 39.113014,
+  lng: -105.358887,
 };
 
 const position = {
-  lat: 39.857563414,
+  lat: 39.113014,
   lng: -119.417931,
 };
 
-function GlobalMap() {
+function getWildfires(events) {
+  let wildFireEvents = [];
+
+  events.forEach((element) => {
+    if (element.category === "Wildfires") {
+      console.log(element.coordinates);
+      wildFireEvents.push(
+        <Marker
+          icon={wildfire_icon}
+          position={{
+            lat: element.coordinates.ltd,
+            lng: element.coordinates.lng,
+          }}
+        />
+      );
+    }
+  });
+
+  return wildFireEvents;
+}
+
+const GlobalMap = (props) => {
+  const { data } = props;
+  const wildFires = getWildfires(data);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.MAPS_API_KEY,
+    googleMapsApiKey: "AIzaSyCBwWMrTWTKZppuxQyA6xXZZzZ6C1HYMaw",
   });
 
   const [map, setMap] = React.useState(null);
@@ -48,11 +70,11 @@ function GlobalMap() {
       onUnmount={onUnmount}
     >
       {/* Child components, such as markers, info windows, etc. */}
-      <Marker icon={wildfire_icon} position={position} />
+      {wildFires}
     </GoogleMap>
   ) : (
     <></>
   );
-}
+};
 
 export default React.memo(GlobalMap);
