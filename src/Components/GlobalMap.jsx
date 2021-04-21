@@ -1,8 +1,8 @@
 /**@format */
 
-import React from "react";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import wildfire_icon from "../static_resources/img/fire-fill.png";
+import React, { useState, useEffect } from "react";
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import Wildfire from "./WeatherEvents/Wildfire";
 import "../static_resources/maps/main.css";
 
 const containerStyle = {
@@ -20,42 +20,26 @@ const position = {
   lng: -119.417931,
 };
 
-function getWildfires(events) {
-  let wildFireEvents = [];
-
-  events.forEach((element) => {
-    if (element.category === "Wildfires") {
-      console.log(element.coordinates);
-      wildFireEvents.push(
-        <Marker
-          icon={wildfire_icon}
-          position={{
-            lat: element.coordinates.ltd,
-            lng: element.coordinates.lng,
-          }}
-        />
-      );
-    }
-  });
-
-  return wildFireEvents;
-}
-
-const GlobalMap = (props) => {
-  const { data } = props;
-  const wildFires = getWildfires(data);
+const GlobalMap = ({ data }) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCBwWMrTWTKZppuxQyA6xXZZzZ6C1HYMaw",
   });
-
   const [map, setMap] = React.useState(null);
+  const [events, setEvents] = React.useState(data);
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
     map.fitBounds(bounds);
     setMap(map);
+    setEvents(data);
   }, []);
+
+  useEffect(() => {
+    if (data !== events) setEvents(data);
+  });
+
+  //if (data !== JSON.stringify({}) ) setEvents(data);
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
@@ -64,13 +48,14 @@ const GlobalMap = (props) => {
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={center}
-      zoom={2}
+      center={{ lat: center.lat, lng: center.lng }}
+      zoom={3}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
       {/* Child components, such as markers, info windows, etc. */}
-      {wildFires}
+      {/*Render all wildfires on Google Maps*/}
+      <Wildfire events={events} onLoad={onLoad} />
     </GoogleMap>
   ) : (
     <></>

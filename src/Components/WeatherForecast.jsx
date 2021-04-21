@@ -7,7 +7,7 @@ import GlobalMap from "./GlobalMap";
 
 class WeatherForecast extends Component {
   state = {
-    events: [],
+    events: {},
   };
 
   componentDidMount() {
@@ -26,6 +26,7 @@ class WeatherForecast extends Component {
 
     temp.data.events.forEach((element) => {
       weatherEvents.push({
+        id: element.id,
         title: element.title,
         description: element.description,
         category: element.categories[0].title,

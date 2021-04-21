@@ -7,8 +7,8 @@ import logger from "./services/logservice";
 logger.init();
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <App />
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById('root')
 );
