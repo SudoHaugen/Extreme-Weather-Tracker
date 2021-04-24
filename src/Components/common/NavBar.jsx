@@ -1,5 +1,7 @@
 /**@format */
 
+import Searchbox from "./Searchbox";
+
 const NavBar = () => {
   return (
     <div>
@@ -7,11 +9,11 @@ const NavBar = () => {
         <div className="container-fluid">
           <a className="navbar-brand">Extreme Weather Tracker</a>
           <form className="d-flex">
-            <input
+            <Searchbox
               className="form-control me-2"
               type="search"
-              placeholder="Search"
               aria-label="Search"
+              highlightFirstSuggestion={true}
             />
             <button className="btn btn-outline-success" type="submit">
               Search

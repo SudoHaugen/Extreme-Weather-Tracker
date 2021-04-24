@@ -9,6 +9,7 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBwWMrTWTKZppuxQyA6xXZZzZ6C1HYMaw&libraries=places"></script>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="stylesheet" href="../src/static_resources/maps/main.css">
     <!--
@@ -33,6 +34,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="map"></div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -44,11 +46,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-
-              <div id="map"></div>
-          <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBwWMrTWTKZppuxQyA6xXZZzZ6C1HYMaw"
-            async
-          ></script>
   </body>
 </html>

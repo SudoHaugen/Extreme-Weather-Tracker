@@ -2,9 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import NavBar from "./common/NavBar";
+
+//Weather events
 import Wildfire from "./WeatherEvents/Wildfire";
 import Storms from "./WeatherEvents/Storms";
 import Volcanic_activity from "./WeatherEvents/VolcanicActivity";
+
+//Static resources
 import "../static_resources/maps/main.css";
 
 const containerStyle = {
@@ -26,6 +31,7 @@ const GlobalMap = ({ data }) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCBwWMrTWTKZppuxQyA6xXZZzZ6C1HYMaw",
+    libraries: ["places"],
   });
   const [map, setMap] = useState(null);
   const [events, setEvents] = useState(data);
@@ -46,19 +52,22 @@ const GlobalMap = ({ data }) => {
   }, []);
 
   return isLoaded ? (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={{ lat: center.lat, lng: center.lng }}
-      zoom={3}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
-    >
-      {/* Child components, such as markers, info windows, etc. */}
-      {/*Render all wildfires on Google Maps*/}
-      <Wildfire events={events} />
-      <Storms events={events} />
-      <Volcanic_activity events={events} />
-    </GoogleMap>
+    <React.Fragment>
+      <NavBar />
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={{ lat: center.lat, lng: center.lng }}
+        zoom={3}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+      >
+        {/* Child components, such as markers, info windows, etc. */}
+        {/*Render all wildfires on Google Maps*/}
+        <Wildfire events={events} />
+        <Storms events={events} />
+        <Volcanic_activity events={events} />
+      </GoogleMap>
+    </React.Fragment>
   ) : (
     <></>
   );
