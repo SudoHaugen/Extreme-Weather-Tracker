@@ -7,24 +7,21 @@ import wildfire_icon from "../../static_resources/img/fire-fill.png";
 import WildfireCard from "./WildfireCard";
 
 const Wildfire = ({ events }) => {
-  const makeWildfireLocations = () => {
-    let wildfires = _.where(events, { category: "Wildfires" });
+  let wildfires = _.where(events, { category: "Wildfires" });
 
-    wildfires = wildfires.map((location) => {
-      return (
-        <Marker
-          icon={wildfire_icon}
-          position={{
-            lat: location.coordinates.ltd,
-            lng: location.coordinates.lng,
-          }}
-          key={location.id}
-        />
-      );
-    });
-    return wildfires;
-  };
-  return <div className="Wildfires">{makeWildfireLocations()}</div>;
+  wildfires = wildfires.map((location) => {
+    return (
+      <Marker
+        icon={wildfire_icon}
+        position={{
+          lat: location.coordinates.ltd,
+          lng: location.coordinates.lng,
+        }}
+        key={location.id}
+      />
+    );
+  });
+  return <div className="Wildfires">{wildfires}</div>;
 };
 
 export default Wildfire;

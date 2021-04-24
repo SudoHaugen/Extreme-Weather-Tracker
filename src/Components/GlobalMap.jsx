@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import Wildfire from "./WeatherEvents/Wildfire";
+import Storms from "./WeatherEvents/Storms";
+import Volcanic_activity from "./WeatherEvents/VolcanicActivity";
 import "../static_resources/maps/main.css";
 
 const containerStyle = {
@@ -25,8 +27,8 @@ const GlobalMap = ({ data }) => {
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCBwWMrTWTKZppuxQyA6xXZZzZ6C1HYMaw",
   });
-  const [map, setMap] = React.useState(null);
-  const [events, setEvents] = React.useState(data);
+  const [map, setMap] = useState(null);
+  const [events, setEvents] = useState(data);
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
@@ -38,8 +40,6 @@ const GlobalMap = ({ data }) => {
   useEffect(() => {
     if (data !== events) setEvents(data);
   });
-
-  //if (data !== JSON.stringify({}) ) setEvents(data);
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
@@ -55,7 +55,9 @@ const GlobalMap = ({ data }) => {
     >
       {/* Child components, such as markers, info windows, etc. */}
       {/*Render all wildfires on Google Maps*/}
-      <Wildfire events={events} onLoad={onLoad} />
+      <Wildfire events={events} />
+      <Storms events={events} />
+      <Volcanic_activity events={events} />
     </GoogleMap>
   ) : (
     <></>
