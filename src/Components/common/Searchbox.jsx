@@ -31,6 +31,7 @@ class Searchbox extends Component {
         value={this.state.address}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
+        highlightFirstSuggestion={this.props.highlight}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps }) => (
           <div>
@@ -46,8 +47,14 @@ class Searchbox extends Component {
                   ? "suggestion-item--active"
                   : "suggestion-item";
                 const style = suggestion.active
-                  ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                  : { backgroundColor: "#ffffff", cursor: "pointer" };
+                  ? {
+                      backgroundColor: "#fafafa",
+                      cursor: "pointer",
+                    }
+                  : {
+                      backgroundColor: "#ffffff",
+                      cursor: "pointer",
+                    };
 
                 return (
                   <div

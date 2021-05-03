@@ -1,0 +1,14 @@
+/*Nav area*/
+.nav.navbar-light.bg-light .container-fluid .d-inline-flex .autocomplete-dropdown-container {
+  position: absolute;
+  background-color: black;
+  width: 300%;
+}
+
+.nav.navbar-light.bg-light {
+  background-color: blue;
+}
+
+/*End Nav area*/
+
+/*# sourceMappingURL=main.css.map */

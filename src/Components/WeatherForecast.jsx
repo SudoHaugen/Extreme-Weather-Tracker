@@ -1,7 +1,6 @@
 /**@format */
 
 import React, { Component } from "react";
-import WeatherEvents from "./WeatherEvents";
 import httpService from "../services/httpService";
 import GlobalMap from "./GlobalMap";
 

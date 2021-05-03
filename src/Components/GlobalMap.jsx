@@ -10,11 +10,13 @@ import Storms from "./WeatherEvents/Storms";
 import Volcanic_activity from "./WeatherEvents/VolcanicActivity";
 
 //Static resources
-import "../static_resources/maps/main.css";
+//import "../static_resources/maps/main.css";
 
 const containerStyle = {
   width: "100%",
   height: "100vh",
+  zIndex: 1,
+  position: "relative",
 };
 
 const center = {

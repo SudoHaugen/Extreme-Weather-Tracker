@@ -1,6 +1,7 @@
 /**@format */
 
 import Searchbox from "./Searchbox";
+import "../../static_resources/main/main.css";
 
 const NavBar = () => {
   return (
@@ -8,13 +9,8 @@ const NavBar = () => {
       <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand">Extreme Weather Tracker</a>
-          <form className="d-flex">
-            <Searchbox
-              className="form-control me-2"
-              type="search"
-              aria-label="Search"
-              highlightFirstSuggestion={true}
-            />
+          <form className="d-inline-flex">
+            <Searchbox aria-label="Search" highlight={true} />
             <button className="btn btn-outline-success" type="submit">
               Search
             </button>
