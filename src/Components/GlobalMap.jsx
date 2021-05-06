@@ -59,7 +59,7 @@ const GlobalMap = ({ data }) => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={{ lat: center.lat, lng: center.lng }}
-        zoom={3}
+        zoom={4}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
