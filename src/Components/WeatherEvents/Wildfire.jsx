@@ -1,43 +1,37 @@
 /**@format */
 
-import React, { useState } from "react";
-import { Marker } from "@react-google-maps/api";
+import React from "react";
 import _ from "underscore";
-import wildfire_icon from "../../static_resources/img/fire-fill.png";
-import WildfireCard from "./WildfireCard";
 import EventCard from "../common/Eventcard";
+import { Marker } from "@react-google-maps/api";
+import Wildfire_icon from "../../static_resources/img/fire-fill.png";
 
-const Wildfire = ({ events }) => {
-  const [eventcardVisible, setVisibility] = useState(false);
+const Wildfire = ({ events, changeEventCard, eventId, eventCard }) => {
   let wildfires = _.where(events, { category: "Wildfires" });
 
   wildfires = wildfires.map((location) => {
     return (
       <Marker
-        icon={wildfire_icon}
+        icon={Wildfire_icon}
         position={{
           lat: location.coordinates.ltd,
           lng: location.coordinates.lng,
         }}
         key={location.id}
         onClick={() => {
-          setVisibility(!eventcardVisible);
+          changeEventCard(
+            <EventCard
+              title={location.title}
+              resetEvent={changeEventCard}
+              eventId={location.id}
+              eventCard={this}
+            ></EventCard>
+          );
         }}
       />
     );
   });
-  return (
-    <div className="Wildfires">
-      {eventcardVisible === false ? (
-        wildfires
-      ) : (
-        <div className="markerWrapper">
-          {wildfires}
-          <EventCard />
-        </div>
-      )}
-    </div>
-  );
+  return <div className="Wildfires">{wildfires}</div>;
 };
 
 export default Wildfire;
