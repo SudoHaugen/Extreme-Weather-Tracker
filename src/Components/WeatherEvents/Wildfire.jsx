@@ -1,6 +1,7 @@
 /**@format */
 
 import React from "react";
+import { OverlayView } from "@react-google-maps/api";
 import _ from "underscore";
 import EventCard from "../common/Eventcard";
 import { Marker } from "@react-google-maps/api";
@@ -25,6 +26,10 @@ const Wildfire = ({ events, changeEventCard, eventId, eventCard }) => {
               resetEvent={changeEventCard}
               eventId={location.id}
               eventCard={this}
+              position={{
+                lat: location.coordinates.ltd,
+                lng: location.coordinates.lng,
+              }}
             ></EventCard>
           );
         }}

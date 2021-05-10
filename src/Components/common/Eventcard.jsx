@@ -4,7 +4,11 @@ import React from "react";
 
 import "../../static_resources/event_cards/main.css";
 
-const Eventcard = ({ title, resetEvent }) => {
+const Eventcard = ({ title, resetEvent, position }) => {
+  const getLatLang = () => {
+    return position;
+  };
+
   return (
     <div
       className="center"

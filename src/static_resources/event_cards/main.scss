@@ -25,14 +25,7 @@ p
   font-size:12px;
 }
 
-.center
-{
-  height:100vh;
-  width:100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 /* End Non-Essential  */
 
@@ -131,7 +124,6 @@ p
 
 
 /* Optional
-
 .property-image-title
 {
 text-align:center;
@@ -142,10 +134,8 @@ transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
 color:black;
 font-size:1.2em;
 }
-
 .property-card:hover .property-image-title
 {
 opacity:1;
 }
-
 */
