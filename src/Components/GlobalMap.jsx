@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
-import { OverlayView } from "@react-google-maps/api";
 import NavBar from "./common/NavBar";
 import Loader from "react-loader";
 
@@ -95,16 +94,7 @@ const GlobalMap = ({ data }) => {
           />
           <Storms events={events} />
           <Volcanic_activity events={events} />
-          {currentEventCard !== null ? ( //Needs refactoring
-            <OverlayView
-              position={currentEventCard.props.position}
-              mapPaneName={"overlayMouseTarget"}
-            >
-              {currentEventCard}
-            </OverlayView>
-          ) : (
-            <></>
-          )}
+          {currentEventCard}
         </GoogleMap>
       </Loader>
     </React.Fragment>
