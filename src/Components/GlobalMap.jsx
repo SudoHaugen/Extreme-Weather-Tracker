@@ -43,6 +43,7 @@ const GlobalMap = ({ data }) => {
    * This card is global meaning that only one (or none) card will be shown at any time
    */
   const [currentEventCard, setcurrentEventCard] = useState(null);
+  const [centerLocation, setCenterLocation] = useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
@@ -65,9 +66,17 @@ const GlobalMap = ({ data }) => {
     }
   };
 
+  const searchForCenterLocation = (pos) => {
+    if (pos === null || pos === undefined) {
+      setCenterLocation(center);
+    } else {
+      setCenterLocation(pos);
+    }
+  };
+
   useEffect(() => {
-    if (currentEventCard !== null) center = currentEventCard.props.position;
     if (data !== events) setEvents(data);
+    console.log(centerLocation);
   });
 
   const onUnmount = React.useCallback(function callback(map) {
@@ -76,12 +85,12 @@ const GlobalMap = ({ data }) => {
 
   return isLoaded ? (
     <React.Fragment>
-      <NavBar />
+      <NavBar setCenterLocation={searchForCenterLocation} />
       <Loader loaded={isLoaded}>
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={{ lat: center.lat, lng: center.lng }}
-          zoom={4}
+          center={!centerLocation ? center : centerLocation}
+          zoom={7}
           onLoad={onLoad}
           onUnmount={onUnmount}
         >

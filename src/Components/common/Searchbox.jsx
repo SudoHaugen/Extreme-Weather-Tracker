@@ -17,10 +17,12 @@ class Searchbox extends Component {
   };
 
   handleSelect = async (address) => {
+    const { setCenterLocation } = this.props;
     try {
       const location = await geocodeByAddress(address);
       const latLng = await getLatLng(location[0]);
       console.log("Success", latLng);
+      setCenterLocation(latLng);
     } catch (error) {
       console.log("Error", error);
     }
