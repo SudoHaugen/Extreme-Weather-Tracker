@@ -5,7 +5,14 @@ import { OverlayView } from "@react-google-maps/api";
 
 import "../../static_resources/event_cards/main.css";
 
-const Eventcard = ({ title, resetEvent, position }) => {
+const Eventcard = ({
+  title,
+  resetEvent,
+  position,
+  eventType,
+  date,
+  source,
+}) => {
   return (
     <OverlayView position={position} mapPaneName={"overlayMouseTarget"}>
       <div
@@ -19,11 +26,13 @@ const Eventcard = ({ title, resetEvent, position }) => {
             <div className="property-image"></div>
           </a>
           <div className="property-description">
-            <h5>{title}</h5>
+            <h5 style={{ padding: "5px 0px 10px" }}>{title}</h5>
+            <p>Incident type: {eventType ? eventType : "Not available"}</p>
             <p>
-              Lorem Ipsum Dipsum hortata. Mixcall Horcho. Mixwell Chingo. More
-              Bingo. Lorem Ipum doth be hard.
+              Date registered: <br />
+              {date ? date : "Not available"}
             </p>
+            <p>Source: {source ? source : "Not available"}</p>
           </div>
           <a href="#">
             <div className="property-social-icons"></div>

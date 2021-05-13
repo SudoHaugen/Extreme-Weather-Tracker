@@ -6,7 +6,7 @@ import EventCard from "../common/Eventcard";
 import { Marker } from "@react-google-maps/api";
 import Wildfire_icon from "../../static_resources/img/fire-fill.png";
 
-const Wildfire = ({ events, changeEventCard, eventId, eventCard }) => {
+const Wildfire = ({ events, changeEventCard }) => {
   let wildfires = _.where(events, { category: "Wildfires" });
 
   wildfires = wildfires.map((location) => {
@@ -27,6 +27,9 @@ const Wildfire = ({ events, changeEventCard, eventId, eventCard }) => {
                 lat: location.coordinates.ltd,
                 lng: location.coordinates.lng,
               }}
+              eventType={location.category}
+              date={location.date}
+              source={location.source}
             ></EventCard>
           );
         }}

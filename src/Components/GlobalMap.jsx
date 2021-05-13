@@ -66,6 +66,11 @@ const GlobalMap = ({ data }) => {
     }
   };
 
+  //Function which will re-center the map according to the search result from the searchbox area
+  /**
+   * @param pos - A geolocation which represents the users desired location
+   * */
+
   const searchForCenterLocation = (pos) => {
     if (pos === null || pos === undefined) {
       setCenterLocation(center);
@@ -90,7 +95,7 @@ const GlobalMap = ({ data }) => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={!centerLocation ? center : centerLocation}
-          zoom={7}
+          zoom={4}
           onLoad={onLoad}
           onUnmount={onUnmount}
         >

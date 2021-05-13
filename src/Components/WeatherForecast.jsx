@@ -33,6 +33,8 @@ class WeatherForecast extends Component {
           lng: element.geometries[0].coordinates[0],
           ltd: element.geometries[0].coordinates[1],
         },
+        date: element.geometries[0].date.substring(0, 10),
+        source: element.sources[0].url,
       });
     });
 

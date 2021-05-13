@@ -1,4 +1,35 @@
+$bezier-shape: 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
 
+/*Animation effects*/
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
 
 body
 {
@@ -25,14 +56,12 @@ p
   font-size:12px;
 }
 
-
-
-/* End Non-Essential  */
-
 .property-card
 {
-  height:18em;
-  width:14em;
+  min-width: 14em;
+  min-height: 18em;
+  max-width: 20em;
+  max-height: 32;
   display:-webkit-box;
   display:-ms-flexbox;
   display:flex;
@@ -41,13 +70,18 @@ p
   -ms-flex-direction:column;
   flex-direction:column;
   position:relative;
-  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition:all $bezier-shape;
+  -o-transition:all $bezier-shape;
+  transition:all $bezier-shape;
   border-radius:16px;
-  overflow:hidden;
+  overflow-wrap:overlay;
   -webkit-box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
   box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+  -webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 0.5s; /* Firefox < 16 */
+  -ms-animation: fadein 0.5s; /* Internet Explorer */
+  -o-animation: fadein 0.5s; /* Opera < 12.1 */
+  animation: fadein 0.5s;
 }
 /* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
 
@@ -60,12 +94,13 @@ p
   padding:1em 2em;
   position:Absolute;
   top:0px;
-  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition:all $bezier-shape;
+  -o-transition:all $bezier-shape;
+  transition:all $bezier-shape;
   background-image:url('../img/wildfire_card.jpg');
   background-size:cover;
   background-repeat:no-repeat;
+  overflow-wrap: break-word;
 }
 
 /* Bottom Card Section */
@@ -77,11 +112,12 @@ p
   width:14em;
   position:absolute;
   bottom:0em;
-  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition:all $bezier-shape;
+  -o-transition:all $bezier-shape;
+  transition:all $bezier-shape;
   padding: 0.5em 1em;
   text-align:center;
+  overflow: auto;
 }
 
 /* Social Icons */
@@ -94,13 +130,12 @@ p
   position:absolute;
   bottom:1em;
   left:1em;
-  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition:all $bezier-shape;
+  -o-transition:all $bezier-shape;
+  transition:all $bezier-shape;
 }
 
-/* Property Cards Hover States */
-
+/* Property Cards Hover States
 .property-card:hover .property-description
 {
   height:0em;
