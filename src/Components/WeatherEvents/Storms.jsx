@@ -1,26 +1,46 @@
 /**@format */
 
 import React from "react";
-import { Marker } from "@react-google-maps/api";
 import _ from "underscore";
-import storms_icon from "../../static_resources/img/thunderstorms-fill.png";
+import EventCard from "../common/Eventcard";
+import { Marker } from "@react-google-maps/api";
+import Storm_icon from "../../static_resources/img/thunderstorms-fill.png";
 
-const Storms = ({ events }) => {
-  let severe_storms = _.where(events, { category: "Severe Storms" });
+/**
+ * Unable to find a proper icon for this event yet so I've used a placeholder instead for the time being
+ */
 
-  severe_storms = severe_storms.map((location) => {
+const Storms = ({ events, changeEventCard }) => {
+  let storm_activity = _.where(events, { category: "Severe Storms" });
+
+  storm_activity = storm_activity.map((location) => {
     return (
       <Marker
-        icon={storms_icon}
+        icon={Storm_icon}
         position={{
           lat: location.coordinates.ltd,
           lng: location.coordinates.lng,
         }}
         key={location.id}
+        onClick={() => {
+          changeEventCard(
+            <EventCard
+              title={location.title}
+              resetEvent={changeEventCard}
+              position={{
+                lat: location.coordinates.ltd,
+                lng: location.coordinates.lng,
+              }}
+              eventType={location.category}
+              date={location.date}
+              source={location.source}
+            ></EventCard>
+          );
+        }}
       />
     );
   });
-  return <div className="Severe-Storms">{severe_storms}</div>;
+  return <div className="Storm-Activity">{storm_activity}</div>;
 };
 
 export default Storms;

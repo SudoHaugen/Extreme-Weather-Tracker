@@ -23,7 +23,7 @@ const Eventcard = ({
       >
         <div className="property-card">
           <a href="#">
-            <div className="property-image"></div>
+            <div className={`property-image ${eventType}`}></div>
           </a>
           <div className="property-description">
             <h5 style={{ padding: "5px 0px 10px" }}>{title}</h5>

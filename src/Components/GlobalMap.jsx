@@ -25,16 +25,13 @@ let center = {
   lng: -105.358887,
 };
 
-const position = {
-  lat: 39.113014,
-  lng: -119.417931,
-};
+const libraries = ["places"];
 
 const GlobalMap = ({ data }) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCBwWMrTWTKZppuxQyA6xXZZzZ6C1HYMaw",
-    libraries: ["places"],
+    libraries,
   });
   const [map, setMap] = useState(null);
   const [events, setEvents] = useState(data);
@@ -44,6 +41,7 @@ const GlobalMap = ({ data }) => {
    */
   const [currentEventCard, setcurrentEventCard] = useState(null);
   const [centerLocation, setCenterLocation] = useState(null);
+  const [zoomLevel, setzoomLevel] = useState(4);
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
@@ -59,7 +57,7 @@ const GlobalMap = ({ data }) => {
    * */
   const setNewEventCard = (eventCard) => {
     if (eventCard !== null) {
-      center = eventCard.props.position;
+      //center = eventCard.props.position; Uncomment if users view should autofocus to where event card is being displayed
       setcurrentEventCard(eventCard);
     } else {
       setcurrentEventCard(null);
@@ -74,14 +72,15 @@ const GlobalMap = ({ data }) => {
   const searchForCenterLocation = (pos) => {
     if (pos === null || pos === undefined) {
       setCenterLocation(center);
+      setzoomLevel(4);
     } else {
       setCenterLocation(pos);
+      setzoomLevel(9);
     }
   };
 
   useEffect(() => {
     if (data !== events) setEvents(data);
-    console.log(centerLocation);
   });
 
   const onUnmount = React.useCallback(function callback(map) {
@@ -95,7 +94,7 @@ const GlobalMap = ({ data }) => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={!centerLocation ? center : centerLocation}
-          zoom={4}
+          zoom={zoomLevel}
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
@@ -106,8 +105,16 @@ const GlobalMap = ({ data }) => {
             changeEventCard={setNewEventCard}
             eventCard={currentEventCard}
           />
-          <Storms events={events} />
-          <Volcanic_activity events={events} />
+          <Storms
+            events={events}
+            changeEventCard={setNewEventCard}
+            eventCard={currentEventCard}
+          />
+          <Volcanic_activity
+            events={events}
+            changeEventCard={setNewEventCard}
+            eventCard={currentEventCard}
+          />
           {currentEventCard}
         </GoogleMap>
       </Loader>

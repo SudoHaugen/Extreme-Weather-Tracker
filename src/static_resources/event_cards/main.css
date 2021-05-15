@@ -97,7 +97,7 @@ p {
 
 /* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
 /* Top Half of card, image. */
-.property-image {
+.property-image.Wildfires {
   height: 6em;
   width: 14em;
   padding: 1em 2em;
@@ -107,6 +107,36 @@ p {
   -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
   background-image: url("../img/wildfire_card.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-wrap: break-word;
+}
+
+.property-image.Volcanoes {
+  height: 6em;
+  width: 14em;
+  padding: 1em 2em;
+  position: Absolute;
+  top: 0px;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background-image: url("../img/volcano_card.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-wrap: break-word;
+}
+
+.property-image.Storms {
+  height: 6em;
+  width: 14em;
+  padding: 1em 2em;
+  position: Absolute;
+  top: 0px;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background-image: url("../img/storm_card.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   overflow-wrap: break-word;
