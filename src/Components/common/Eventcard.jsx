@@ -1,7 +1,8 @@
 /**@format */
 
-import React from "react";
+import { React, useState } from "react";
 import { OverlayView } from "@react-google-maps/api";
+import { init } from "../../services/urlShortner.ts";
 
 import "../../static_resources/event_cards/main.css";
 
@@ -13,6 +14,17 @@ const Eventcard = ({
   date,
   source,
 }) => {
+  const [weather_source, setWeather_Source] = useState("");
+  const resolveBitly = async (src) => {
+    try {
+      let result = await init(src);
+      setWeather_Source(result.id);
+    } catch (error) {
+      console.log(error.error);
+    }
+  };
+  resolveBitly(source);
+
   return (
     <OverlayView position={position} mapPaneName={"overlayMouseTarget"}>
       <div
@@ -32,7 +44,7 @@ const Eventcard = ({
               Date registered: <br />
               {date ? date : "Not available"}
             </p>
-            <p>Source: {source ? source : "Not available"}</p>
+            <p>Source: {source ? <a href={`https://www.${weather_source}`} target={"_blank"} rel={"noreferrer noopener"}>{weather_source}</a> : "Not available"}</p>
           </div>
           <a href="#">
             <div className="property-social-icons"></div>
