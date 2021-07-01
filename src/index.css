@@ -41,3 +41,7 @@ code {
   cursor: pointer;
   background-color: white;
 }
+
+.dropdown-menu {
+  z-index: 9000005;
+}

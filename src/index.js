@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './static_resources/main/main.css';
 import App from './App';
 import logger from "./services/logservice";
 
