@@ -10,15 +10,51 @@ const NavBar = ({ setCenterLocation }) => {
         <div className="container-fluid">
           <a className="navbar-brand">Extreme Weather Tracker</a>
           <form className="d-inline-flex">
-            <div className="dropdown">
-              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Filters
               </button>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a className="dropdown-item" href="#">Action</a>
-                <a className="dropdown-item" href="#">Another action</a>
-                <a className="dropdown-item" href="#">Something else here</a>
-              </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Wildfire
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckChecked"
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Volcanic Activity
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckChecked"
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Storms
+                  </label>
+                </div>
+              </ul>
             </div>
             <Searchbox
               aria-label="Search"

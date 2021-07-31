@@ -115,6 +115,7 @@ const GlobalMap = ({ data }) => {
             changeEventCard={setNewEventCard}
             eventCard={currentEventCard}
           />
+
           {currentEventCard}
         </GoogleMap>
       </Loader>
