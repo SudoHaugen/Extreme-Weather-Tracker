@@ -3,7 +3,7 @@
 import { AxiosError } from "axios";
 import { BitlyClient, isBitlyErrResponse } from "bitly";
 
-const bitly = new BitlyClient("ab0167dc9bced4b559efa4abef2a451c7b6cd6ac", {});
+const bitly = new BitlyClient(`${PROCESS.ENV.bitlyKey}`, {});
 
 export async function init(link) {
   let result;
