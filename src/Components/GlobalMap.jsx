@@ -30,7 +30,7 @@ const libraries = ["places"];
 const GlobalMap = ({ data }) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyCBwWMrTWTKZppuxQyA6xXZZzZ6C1HYMaw",
+    googleMapsApiKey: `${PROCESS.ENV.mapsAPIKey}`,
     libraries,
   });
   const [map, setMap] = useState(null);
